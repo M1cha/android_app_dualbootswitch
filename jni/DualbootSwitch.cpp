@@ -28,7 +28,7 @@ extern "C" jint Java_com_xiaomi_dualbootswitch_MainActivity_setBootmode(JNIEnv *
 extern "C" jstring Java_com_xiaomi_dualbootswitch_MainActivity_getBootmode(
 		JNIEnv * env, jobject _this) {
 
-	char bootmode[20];
+	char bootmode[13];
 	char *szResult;
 
 	// open misc-partition

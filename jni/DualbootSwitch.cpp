@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-extern "C" jint Java_com_xiaomi_dualbootswitch_MainActivity_setBootmode(JNIEnv * env, jobject _this, jstring jBootmode) {
+extern "C" jint Java_com_xiaomi_dualbootswitch_MainActivity_setBootmode(JNIEnv * env, jobject thiz, jstring jBootmode) {
 	jboolean isCopy;
 	const char * bootmode = env->GetStringUTFChars(jBootmode, &isCopy);
 

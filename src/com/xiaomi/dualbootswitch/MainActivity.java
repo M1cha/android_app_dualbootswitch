@@ -26,11 +26,27 @@ public class MainActivity extends Activity {
 		RootTools.getShell(true).add(command).waitForFinish();
 
 	}
+	
+	private void reboot(String mode) {
+		CommandCapture command = new CommandCapture(0,
+				"reboot "+mode);
+
+		try {
+			RootTools.getShell(true).add(command).waitForFinish();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 
 	private TextView labelSystem;
 	private Button switchButton;
 	private TextView errorText;
 	private int targetSystem = -1;
+	
+	private Button buttonRebootRecovery;
+	private Button buttonRebootBootloader;
+	private Button buttonRebootSystem0;
+	private Button buttonRebootSystem1;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +57,11 @@ public class MainActivity extends Activity {
 			setContentView(R.layout.activity_main);
 			labelSystem = (TextView)findViewById(R.id.labelSystem);
 			switchButton = (Button)findViewById(R.id.switchButton);
+			
+			buttonRebootRecovery = (Button)findViewById(R.id.buttonRebootRecovery);
+			buttonRebootBootloader = (Button)findViewById(R.id.buttonRebootBootloader);
+			buttonRebootSystem0 = (Button)findViewById(R.id.buttonRebootSystem0);
+			buttonRebootSystem1 = (Button)findViewById(R.id.buttonRebootSystem1);
 			updateUI();
 		} catch (Exception e) {
 			setContentView(R.layout.error);
@@ -68,13 +89,39 @@ public class MainActivity extends Activity {
 		}
 	}
 
-	public void switchBootmode(View v) {
+	public void switchBootmode() {
 		if (targetSystem == 0) {
 			setBootmode("boot-system0");
 		} else if (targetSystem == 1) {
 			setBootmode("boot-system1");
 		}
 		updateUI();
+	}
+	
+	public void onClickHandler(View v) {
+		switch(v.getId()) {
+			case R.id.switchButton:
+				switchBootmode();
+			break;
+			
+			case R.id.buttonRebootRecovery:
+				reboot("recovery");
+			break;
+			
+			case R.id.buttonRebootBootloader:
+				reboot("bootloader");
+			break;
+			
+			case R.id.buttonRebootSystem0:
+				setBootmode("boot-system0");
+				reboot("");
+			break;
+			
+			case R.id.buttonRebootSystem1:
+				setBootmode("boot-system1");
+				reboot("");
+			break;
+		}
 	}
 
 	@Override

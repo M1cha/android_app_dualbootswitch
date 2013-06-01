@@ -10,29 +10,79 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".MainActivity" >
 
-    <TextView
-        android:id="@+id/textView1"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="0"
-        android:text="Active System:"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+        android:layout_weight="0" >
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:gravity="center"
-        android:text="System1"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textSize="40sp"
-        android:id="@+id/labelSystem" />
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:text="Active System:"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <TextView
+            android:id="@+id/labelSystem"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="System1"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+    </LinearLayout>
 
     <Button
         android:id="@+id/switchButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Button"
-        android:onClick="switchBootmode" />
+        android:onClick="onClickHandler"
+        android:text="Button" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="30dp"
+        android:layout_weight="0"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:onClick="onClickHandler"
+            android:text="Reboot Options"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <Button
+            android:id="@+id/buttonRebootRecovery"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="onClickHandler"
+            android:text="Reboot to Recovery" />
+
+        <Button
+            android:id="@+id/buttonRebootSystem0"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="onClickHandler"
+            android:text="Reboot to System1" />
+
+        <Button
+            android:id="@+id/buttonRebootSystem1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="onClickHandler"
+            android:text="Reboot to System2" />
+
+        <Button
+            android:id="@+id/buttonRebootBootloader"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="onClickHandler"
+            android:text="Reboot to Bootloader" />
+    </LinearLayout>
 
 </LinearLayout>
